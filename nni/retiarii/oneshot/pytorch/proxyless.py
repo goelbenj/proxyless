@@ -273,14 +273,16 @@ class ProxylessTrainer(BaseOneShotTrainer):
         indices = list(range(n_train))
         train_sampler = torch.utils.data.sampler.SubsetRandomSampler(indices[:split])
         valid_sampler = torch.utils.data.sampler.SubsetRandomSampler(indices[split:])
-        self.train_loader = torch.utils.data.DataLoader(self.dataset,
-                                                        batch_size=self.batch_size,
-                                                        sampler=train_sampler,
-                                                        num_workers=self.workers)
-        self.valid_loader = torch.utils.data.DataLoader(self.dataset,
-                                                        batch_size=self.batch_size,
-                                                        sampler=valid_sampler,
-                                                        num_workers=self.workers)
+        self.train_loader = self.dataset
+        self.valid_loader = self.dataset
+        # self.train_loader = torch.utils.data.DataLoader(self.dataset,
+        #                                                 batch_size=self.batch_size,
+        #                                                 sampler=train_sampler,
+        #                                                 num_workers=self.workers)
+        # self.valid_loader = torch.utils.data.DataLoader(self.dataset,
+        #                                                 batch_size=self.batch_size,
+        #                                                 sampler=valid_sampler,
+        #                                                 num_workers=self.workers)
 
     def _train_one_epoch(self, epoch):
         self.model.train()

@@ -144,7 +144,8 @@ class ImagenetDataProvider(DataProvider):
 
     @property
     def train_path(self):
-        return os.path.join(self.save_path, 'train')
+        # return os.path.join(self.save_path, 'train')
+        return os.path.join(self.save_path, 'val')
 
     @property
     def valid_path(self):

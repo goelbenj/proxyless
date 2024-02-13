@@ -115,15 +115,15 @@ if __name__ == "__main__":
         from torchvision.datasets import ImageNet
         normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                          std=[0.229, 0.224, 0.225])
-        dataset = ImageNet(args.data_path, transform=transforms.Compose([
-            transforms.RandomResizedCrop(224),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            normalize,
-        ]))
+        # dataset = ImageNet(args.data_path, split='val', transform=transforms.Compose([
+        #     transforms.RandomResizedCrop(224),
+        #     transforms.RandomHorizontalFlip(),
+        #     transforms.ToTensor(),
+        #     normalize,
+        # ]))
         trainer = ProxylessTrainer(model,
                                    loss=LabelSmoothingLoss(),
-                                   dataset=dataset,
+                                   dataset=data_provider.train,
                                    optimizer=optimizer,
                                    metrics=lambda output, target: accuracy(output, target, topk=(1, 5,)),
                                    num_epochs=120,
