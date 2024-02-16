@@ -258,8 +258,8 @@ class Develop(develop):
 
     def run(self):
         open('nni/version.py', 'w').write("__version__ = '999.dev0'")
-        if not self.skip_ts:
-            setup_ts.build(release=None)
+        # if not self.skip_ts:
+            # setup_ts.build(release=None)
         super().run()
 
 class Clean(clean):

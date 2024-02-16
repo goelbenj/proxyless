@@ -53,11 +53,11 @@ class Retrain:
         self.validate(is_test=True)
 
     def train_one_epoch(self, adjust_lr_func, train_log_func, label_smoothing=0.1):
-        batch_time = AverageMeter('batch_time')
-        data_time = AverageMeter('data_time')
-        losses = AverageMeter('losses')
-        top1 = AverageMeter('top1')
-        top5 = AverageMeter('top5')
+        batch_time = AverageMeter()
+        data_time = AverageMeter()
+        losses = AverageMeter()
+        top1 = AverageMeter()
+        top5 = AverageMeter()
         self.model.train()
         end = time.time()
         for i, (images, labels) in enumerate(self.train_loader):
@@ -147,10 +147,10 @@ class Retrain:
         else:
             data_loader = self.valid_loader
         self.model.eval()
-        batch_time = AverageMeter('batch_time')
-        losses = AverageMeter('losses')
-        top1 = AverageMeter('top1')
-        top5 = AverageMeter('top5')
+        batch_time = AverageMeter()
+        losses = AverageMeter()
+        top1 = AverageMeter()
+        top5 = AverageMeter()
 
         end = time.time()
         with torch.no_grad():
