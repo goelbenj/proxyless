@@ -80,7 +80,14 @@ if __name__ == "__main__":
         device = torch.device('cpu')
 
     logger.info('Creating data provider...')
-    data_provider = datasets.ImagenetDataProvider(save_path=args.data_path,
+    # data_provider = datasets.ImagenetDataProvider(save_path=args.data_path,
+    #                                               train_batch_size=args.train_batch_size,
+    #                                               test_batch_size=args.test_batch_size,
+    #                                               valid_size=None,
+    #                                               n_worker=args.n_worker,
+    #                                               resize_scale=args.resize_scale,
+    #                                               distort_color=args.distort_color)
+    data_provider = datasets.Food101DataProvider(save_path=args.data_path,
                                                   train_batch_size=args.train_batch_size,
                                                   test_batch_size=args.test_batch_size,
                                                   valid_size=None,
